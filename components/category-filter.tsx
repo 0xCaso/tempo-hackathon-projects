@@ -17,7 +17,7 @@ export function CategoryFilter({ categories, active, counts, total, onSelect }: 
     <div className="flex flex-wrap gap-2">
       <button
         onClick={() => onSelect(null)}
-        className={`font-mono text-xs px-3 py-1.5 border transition-colors ${
+        className={`cursor-pointer font-mono text-xs px-3 py-1.5 border transition-colors ${
           active === null
             ? "bg-[var(--tempo-accent)] text-white border-[var(--tempo-accent)]"
             : "bg-transparent text-[var(--tempo-text-secondary)] border-[var(--tempo-border)] hover:border-[var(--tempo-border-hover)]"
@@ -29,7 +29,7 @@ export function CategoryFilter({ categories, active, counts, total, onSelect }: 
         <button
           key={cat}
           onClick={() => onSelect(cat)}
-          className={`font-mono text-xs px-3 py-1.5 border transition-colors ${
+          className={`cursor-pointer font-mono text-xs px-3 py-1.5 border transition-colors ${
             active === cat
               ? "bg-[var(--tempo-accent)] text-white border-[var(--tempo-accent)]"
               : "bg-transparent text-[var(--tempo-text-secondary)] border-[var(--tempo-border)] hover:border-[var(--tempo-border-hover)]"

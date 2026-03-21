@@ -4,6 +4,8 @@ import Link from "next/link";
 import { CATEGORY_LABELS } from "@/lib/types";
 import type { Project } from "@/lib/types";
 
+const TEMPO_LOGO = "https://tempo.xyz/images/logo.svg";
+
 function StarIcon() {
   return (
     <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -25,10 +27,10 @@ function ExternalLinkIcon() {
 export function ProjectCard({ project }: { project: Project }) {
   const { name, description, githubUrl, demoUrl, category, github } = project;
   const ownerSlug = github?.owner ?? (githubUrl ? new URL(githubUrl).pathname.split("/")[1] : null);
-  const avatarUrl = github?.ownerAvatarUrl;
+  const avatarUrl = github?.ownerAvatarUrl || null;
 
   return (
-    <article className="group flex flex-col bg-white p-6 gap-4 transition-colors hover:bg-[#fafaf8]">
+    <article className="group flex flex-col bg-white p-6 gap-5 transition-colors hover:bg-[#fafaf8]">
       {/* Owner row */}
       <div className="flex items-center gap-2">
         {avatarUrl ? (
@@ -40,7 +42,14 @@ export function ProjectCard({ project }: { project: Project }) {
             className="rounded-full"
           />
         ) : (
-          <div className="w-6 h-6 rounded-full bg-[var(--tempo-border)]" />
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={TEMPO_LOGO}
+            alt="Tempo"
+            width={24}
+            height={24}
+            className="opacity-40"
+          />
         )}
         {ownerSlug && (
           <span className="font-mono text-xs text-[var(--tempo-text-muted)]">
@@ -84,7 +93,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 font-mono text-xs text-[var(--tempo-text-secondary)] hover:text-[var(--tempo-text-primary)] transition-colors"
+            className="flex items-center gap-1.5 font-mono text-xs text-[var(--tempo-text-secondary)] hover:text-[var(--tempo-text-primary)] transition-colors cursor-pointer"
           >
             GitHub <ExternalLinkIcon />
           </Link>
@@ -94,7 +103,7 @@ export function ProjectCard({ project }: { project: Project }) {
             href={demoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 font-mono text-xs text-[var(--tempo-text-secondary)] hover:text-[var(--tempo-text-primary)] transition-colors"
+            className="flex items-center gap-1.5 font-mono text-xs text-[var(--tempo-text-secondary)] hover:text-[var(--tempo-text-primary)] transition-colors cursor-pointer"
           >
             Live Demo <ExternalLinkIcon />
           </Link>

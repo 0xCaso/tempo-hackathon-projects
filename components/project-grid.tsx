@@ -78,9 +78,9 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
 
   return (
     <div className="flex flex-col gap-6">
-      {/* Search + filter row */}
-      <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
-        <div className="relative sm:w-64">
+      {/* Search + filter rows */}
+      <div className="flex flex-col gap-4">
+        <div className="relative w-full">
           <span className="pointer-events-none absolute left-2.5 top-1/2 -translate-y-1/2 text-[var(--tempo-text-muted)]">
             <SearchIcon />
           </span>

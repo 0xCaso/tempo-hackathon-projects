@@ -23,7 +23,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         },
         {} as Record<Category, number>
       ),
-    [categories, projects]
+    [projects]
   );
 
   const filtered = useMemo(
@@ -43,16 +43,19 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         total={projects.length}
         onSelect={setActiveCategory}
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--tempo-border)]">
-        {filtered.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+      <div className="border border-[var(--tempo-border)]">
+        {filtered.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[var(--tempo-border)]">
+            {filtered.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+        ) : (
+          <p className="font-mono text-sm text-[var(--tempo-text-muted)] text-center py-12">
+            No projects in this category.
+          </p>
+        )}
       </div>
-      {filtered.length === 0 && (
-        <p className="font-mono text-sm text-[var(--tempo-text-muted)] text-center py-12">
-          No projects in this category.
-        </p>
-      )}
     </div>
   );
 }

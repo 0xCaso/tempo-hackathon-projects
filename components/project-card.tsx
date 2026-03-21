@@ -28,7 +28,7 @@ export function ProjectCard({ project }: { project: Project }) {
   const avatarUrl = github?.ownerAvatarUrl;
 
   return (
-    <article className="group flex flex-col bg-white border border-[var(--tempo-border)] p-6 gap-4 transition-colors hover:border-[var(--tempo-border-hover)]">
+    <article className="group flex flex-col bg-white p-6 gap-4 transition-colors hover:bg-[#fafaf8]">
       {/* Owner row */}
       <div className="flex items-center gap-2">
         {avatarUrl ? (

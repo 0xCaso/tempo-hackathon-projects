@@ -161,10 +161,10 @@ export const projects: ProjectDefinition[] = [
     category: "payment",
   },
   {
-    name: "tempohack",
+    name: "Trenchcoat",
     description:
       "Hackathon project exploring MPP payment flows on Tempo.",
-    githubUrl: "https://github.com/Keeeeeeeks/tempohack",
+    githubUrl: "https://github.com/Keeeeeeeks/trenchcoat-mpp",
     category: "apps",
   },
   {

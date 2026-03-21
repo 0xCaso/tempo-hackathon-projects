@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tempo MPP Hackathon — Projects
+
+A browsable gallery of all projects submitted to the [Tempo](https://tempo.xyz) Machine Payments Protocol Hackathon. Live GitHub stats fetched at build time, category filtering, and instant search.
+
+## Features
+
+- 41 hackathon projects with descriptions, categories, and links
+- Live GitHub metadata — stars, language, owner avatar (ISR, revalidates every hour)
+- Category filtering and debounced full-text search
+- Statically generated — no backend, no database
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · shadcn/ui · GitHub REST API
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Optionally, set a GitHub token to raise the API rate limit from 60 to 5,000 req/hr at build time:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+cp .env.local.example .env.local
+# then add your token to .env.local
+```
 
-## Learn More
+## Adding a Project
 
-To learn more about Next.js, take a look at the following resources:
+Edit [`data/projects.ts`](./data/projects.ts) and add an entry to the array:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```ts
+{
+  name: "Your Project",
+  description: "One-line description of what it does.",
+  githubUrl: "https://github.com/owner/repo", // or null
+  demoUrl: "https://yourproject.xyz",          // optional
+  category: "apps",                            // see lib/types.ts for all categories
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Then open a PR.
 
-## Deploy on Vercel
+## Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/0xCaso/tempo-hackathon-projects)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+One click. Add `GITHUB_TOKEN` as an environment variable in Vercel for enriched build-time metadata.

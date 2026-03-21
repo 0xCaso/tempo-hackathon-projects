@@ -23,7 +23,7 @@ export function ProjectGrid({ projects }: { projects: Project[] }) {
         },
         {} as Record<Category, number>
       ),
-    [projects]
+    [projects, categories]
   );
 
   const filtered = useMemo(

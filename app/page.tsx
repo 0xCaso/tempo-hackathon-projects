@@ -25,37 +25,27 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-[var(--tempo-bg)]">
-      {/* Header */}
-      <header className="border-b border-[var(--tempo-border)]">
-        <div className="max-w-screen-xl mx-auto px-6 py-4 flex items-center justify-between">
-          <a
-            href="https://tempo.xyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-xs text-[var(--tempo-text-muted)] uppercase tracking-widest hover:text-[var(--tempo-text-primary)] transition-colors cursor-pointer"
-          >
-            Tempo
-          </a>
+      {/* Hero — two-column at lg: label+title left, description+count right */}
+      <section className="max-w-screen-xl mx-auto px-6 pt-12 pb-10 border-b border-[var(--tempo-border)]">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+          <div>
+            <p className="font-mono text-xs text-[var(--tempo-text-muted)] uppercase tracking-widest mb-3">
+              MPP Hackathon 2026
+            </p>
+            <h1 className="text-4xl lg:text-5xl font-semibold tracking-tight text-[var(--tempo-text-primary)] leading-tight">
+              Projects
+            </h1>
+          </div>
+          <p className="text-sm text-[var(--tempo-text-secondary)] leading-relaxed lg:max-w-sm lg:text-right">
+            {projects.length} projects built during the Tempo Machine Payments
+            Protocol Hackathon — exploring AI agents, on-chain payments, and the
+            future of autonomous economies.
+          </p>
         </div>
-      </header>
-
-      {/* Hero */}
-      <section className="max-w-screen-xl mx-auto px-6 pt-24 pb-16">
-        <p className="font-mono text-xs text-[var(--tempo-text-muted)] uppercase tracking-widest mb-8">
-          MPP Hackathon 2026
-        </p>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight text-[var(--tempo-text-primary)] max-w-2xl leading-tight mb-8">
-          Projects
-        </h1>
-        <p className="text-base text-[var(--tempo-text-secondary)] max-w-lg leading-relaxed">
-          {projects.length} projects built during the Tempo Machine Payments
-          Protocol Hackathon — exploring AI agents, on-chain payments, and the
-          future of autonomous economies.
-        </p>
       </section>
 
       {/* Grid */}
-      <section className="max-w-screen-xl mx-auto px-6 pb-32">
+      <section className="max-w-screen-xl mx-auto px-6 py-10 pb-32">
         <ProjectGrid projects={projects} />
       </section>
 

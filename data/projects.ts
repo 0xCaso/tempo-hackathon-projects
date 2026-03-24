@@ -310,4 +310,12 @@ export const projects: ProjectDefinition[] = [
     demoUrl: "https://helix-tempo.pages.dev",
     category: "devtools",
   },
+  {
+    name: "Remlo",
+    description:
+      "Borderless enterprise payroll on Tempo L1 — AI agents execute compliant batch payments via HTTP 402, employees receive in 0.4s and spend via Visa card globally.",
+    githubUrl: "https://github.com/winsznx/remlo",
+    demoUrl: "https://remlo.xyz",
+    category: "apps",
+  },
 ];

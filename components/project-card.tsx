@@ -1,6 +1,9 @@
 // components/project-card.tsx
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { CATEGORY_LABELS } from "@/lib/types";
 import type { Project } from "@/lib/types";
 
@@ -35,19 +38,21 @@ export function ProjectCard({ project }: { project: Project }) {
   const { name, description, githubUrl, demoUrl, category, github } = project;
   const ownerSlug = github?.owner ?? (githubUrl ? new URL(githubUrl).pathname.split("/")[1] : null);
   const avatarUrl = github?.ownerAvatarUrl || null;
+  const [avatarError, setAvatarError] = useState(false);
 
   return (
     <article className="group flex flex-col bg-white p-6 gap-4 transition-colors hover:bg-[#fafaf8]">
       {/* Avatar + owner + links row */}
       <div className="flex items-center justify-between gap-2">
         <div className="flex items-center gap-2 min-w-0">
-          {avatarUrl ? (
+          {avatarUrl && !avatarError ? (
             <Image
               src={avatarUrl}
               alt={github?.owner ?? ""}
               width={20}
               height={20}
               className="rounded-full flex-shrink-0"
+              onError={() => setAvatarError(true)}
             />
           ) : (
             /* eslint-disable-next-line @next/next/no-img-element */
